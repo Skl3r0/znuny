@@ -4,7 +4,7 @@ services:
   otrs:
     image: juanluisbaptiste/otrs:latest
     ports:
-      - '80:80'
+      - '8008:8008'
     # If running behind a proxy container, expose the ports instead
     # and link the proxy container to this one.
     #  expose:
