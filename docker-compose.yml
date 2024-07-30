@@ -13,7 +13,7 @@ services:
       - mariadb
       # Uncomment if using the smtp relay
       # - postfix
-    env_file: .env
+    env_file: stack.env
     volumes:
       - './volumes/config:/opt/otrs/Kernel'
       # Uncomment if using OTRS_ARTICLE_STORAGE_TYPE=ArticleStorageFS
@@ -27,7 +27,7 @@ services:
     image: juanluisbaptiste/otrs-mariadb:latest
     expose:
       - "3306"
-    env_file: .env
+    env_file: stack.env
     volumes:
       - ./volumes/mysql:/var/lib/mysql
       - /etc/localtime:/etc/localtime:ro
