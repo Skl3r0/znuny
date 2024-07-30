@@ -14,6 +14,9 @@ services:
       # Uncomment if using the smtp relay
       # - postfix
     env_file: stack.env
+    networks:
+      - youfibre_external
+      - youfibre_mongo
     volumes:
       #- './volumes/config:/opt/otrs/Kernel'
       # Uncomment if using OTRS_ARTICLE_STORAGE_TYPE=ArticleStorageFS
@@ -23,6 +26,15 @@ services:
       #- ./volumes/addons:/opt/otrs/addons
       #- ./volumes/db_upgrade:/opt/otrs/db_upgrade
       - /etc/localtime:/etc/localtime:ro
+    deploy:
+      labels:
+        caddy: znuny.dev.network.as212655.net
+        caddy.reverse_proxy: "{{upstreams 8001}}"
+        caddy.tls.dns: route53
+      placement:
+        constraints:
+          - node.hostname == ${SWARM_HOSTNAME:-dc-telehouse-north-swarm-1.network.youfibre.com}
+
   mariadb:
     image: juanluisbaptiste/otrs-mariadb:latest
     expose:
@@ -31,6 +43,15 @@ services:
     volumes:
       #- ./volumes/mysql:/var/lib/mysql
       - /etc/localtime:/etc/localtime:ro
+
+networks:
+  youfibre_external:
+    driver: overlay # Use when deploying over Docker Swarm
+    external: true
+  youfibre_mongo:
+    driver: overlay # Use when deploying with shared mongo cluster
+    external: true
+
 # If you need a SMTP relay you can use this service
   # postfix:
   #   image: juanluisbaptiste/postfix:latest
