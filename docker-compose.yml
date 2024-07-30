@@ -15,9 +15,9 @@ services:
       # - postfix
     env_file: stack.env
     volumes:
-      - './volumes/config:/opt/otrs/Kernel'
+      #- './volumes/config:/opt/otrs/Kernel'
       # Uncomment if using OTRS_ARTICLE_STORAGE_TYPE=ArticleStorageFS
-      #- ./volumes/article:/opt/otrs/var/article
+      - ./volumes/article:/opt/otrs/var/article
       - ./volumes/skins:/opt/otrs/var/httpd/htdocs/skins/
       - ./backups:/var/otrs/backups
       - ./volumes/addons:/opt/otrs/addons
@@ -29,7 +29,7 @@ services:
       - "3306"
     env_file: stack.env
     volumes:
-      - ./volumes/mysql:/var/lib/mysql
+      #- ./volumes/mysql:/var/lib/mysql
       - /etc/localtime:/etc/localtime:ro
 # If you need a SMTP relay you can use this service
   # postfix:
