@@ -33,7 +33,7 @@ services:
         caddy.tls.dns: route53
       placement:
         constraints:
-          - node.hostname == ${SWARM_HOSTNAME:-dc-telehouse-north-swarm-1.network.youfibre.com}
+          - node.hostname == ${SWARM_HOSTNAME:-dc-telehouse-north-swarm-2.network.youfibre.com}
 
   mariadb:
     image: juanluisbaptiste/otrs-mariadb:latest
