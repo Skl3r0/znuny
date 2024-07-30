@@ -17,11 +17,11 @@ services:
     volumes:
       #- './volumes/config:/opt/otrs/Kernel'
       # Uncomment if using OTRS_ARTICLE_STORAGE_TYPE=ArticleStorageFS
-      - ./volumes/article:/opt/otrs/var/article
-      - ./volumes/skins:/opt/otrs/var/httpd/htdocs/skins/
-      - ./backups:/var/otrs/backups
-      - ./volumes/addons:/opt/otrs/addons
-      - ./volumes/db_upgrade:/opt/otrs/db_upgrade
+      #- ./volumes/article:/opt/otrs/var/article
+      #- ./volumes/skins:/opt/otrs/var/httpd/htdocs/skins/
+      #- ./backups:/var/otrs/backups
+      #- ./volumes/addons:/opt/otrs/addons
+      #- ./volumes/db_upgrade:/opt/otrs/db_upgrade
       - /etc/localtime:/etc/localtime:ro
   mariadb:
     image: juanluisbaptiste/otrs-mariadb:latest
