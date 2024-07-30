@@ -16,7 +16,6 @@ services:
     env_file: stack.env
     networks:
       - youfibre_external
-      - youfibre_mongo
     volumes:
       #- './volumes/config:/opt/otrs/Kernel'
       # Uncomment if using OTRS_ARTICLE_STORAGE_TYPE=ArticleStorageFS
