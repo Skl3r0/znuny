@@ -29,11 +29,11 @@ services:
     deploy:
       labels:
         caddy: znuny.dev.network.as212655.net
-        caddy.reverse_proxy: "{{upstreams 8001}}"
+        caddy.reverse_proxy: "{{upstreams 8008}}"
         caddy.tls.dns: route53
       placement:
         constraints:
-          - node.hostname == ${SWARM_HOSTNAME:-dc-telehouse-north-swarm-2.network.youfibre.com}
+          - node.hostname == dc-telehouse-north-swarm-2.network.youfibre.com
 
   mariadb:
     image: juanluisbaptiste/otrs-mariadb:latest
